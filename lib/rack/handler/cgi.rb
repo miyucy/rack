@@ -16,7 +16,7 @@ module Rack
         env["SCRIPT_NAME"] = ""  if env["SCRIPT_NAME"] == "/"
 
         env.update({"rack.version" => [1,0],
-                     "rack.input" => $stdin,
+                     "rack.input" => StringIO.new($stdin.read.to_s),
                      "rack.errors" => $stderr,
 
                      "rack.multithread" => false,

@@ -1,4 +1,5 @@
 require 'rack/content_length'
+require 'stringio'
 
 module Rack
   module Handler

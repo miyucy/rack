@@ -14,7 +14,7 @@ module Rack
         env.delete "HTTP_CONTENT_LENGTH"
         env["SCRIPT_NAME"] = ""  if env["SCRIPT_NAME"] == "/"
 
-        rack_input = Rack::RewindableInput.new($stdin.read.to_s)
+        rack_input = Rack::RewindableInput.new($stdin)
 
         env.update(
           "rack.version" => [1,0],

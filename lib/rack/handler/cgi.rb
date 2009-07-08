@@ -1,4 +1,5 @@
 require 'rack/content_length'
+require 'rack/rewindable_input'
 
 module Rack
   module Handler
@@ -13,7 +14,7 @@ module Rack
         env.delete "HTTP_CONTENT_LENGTH"
         env["SCRIPT_NAME"] = ""  if env["SCRIPT_NAME"] == "/"
 
-        rack_input = RewindableInput.new($stdin.read.to_s)
+        rack_input = Rack::RewindableInput.new($stdin.read.to_s)
 
         env.update(
           "rack.version" => [1,0],
